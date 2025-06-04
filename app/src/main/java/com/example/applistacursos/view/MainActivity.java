@@ -46,21 +46,6 @@ Pessoa outraPessoa;
         pessoa.setCursoDesejado("Desenvolvimento de Sistemas");
         pessoa.setTelefone("99-9999-9999");
 
-       /*outraPessoa = new Pessoa();
-        outraPessoa.setPrimeiroNome("Guilherme");
-        outraPessoa.setSobrenome("Ferreira");
-        outraPessoa.setCursoDesejado("Jogos");
-        outraPessoa.setTelefone("88-8888-8888");
-
-        primeiroNome = findViewById(R.id.primeironome);
-
-        sobrenome = findViewById(R.id.sobrenome);
-
-        nomeCurso = findViewById(R.id.nomecurso);
-
-        telefone = findViewById(R.id.telefone);
-        */
-
         primeiroNome = findViewById(R.id.primeironome);
         sobrenome = findViewById(R.id.sobrenome);
         nomeCurso = findViewById(R.id.nomecurso);
