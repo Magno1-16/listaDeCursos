@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -16,14 +15,12 @@ import com.example.applistacursos.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 Pessoa pessoa;
-
 Pessoa outraPessoa;
 
     EditText primeiroNome;
     EditText sobrenome;
     EditText nomeCurso;
     EditText telefone;
-
     Button btnsalvar;
     Button btnlimpar;
     Button btnfinalizar;
@@ -38,7 +35,6 @@ Pessoa outraPessoa;
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
         pessoa = new Pessoa();
 
         pessoa.setPrimeiroNome("Magno");
@@ -60,16 +56,13 @@ Pessoa outraPessoa;
 
         telefone = findViewById(R.id.telefone);
         */
-
         primeiroNome = findViewById(R.id.primeironome);
         sobrenome = findViewById(R.id.sobrenome);
         nomeCurso = findViewById(R.id.nomecurso);
         telefone = findViewById(R.id.telefone);
-
         btnfinalizar = findViewById(R.id.btnfinalizar);
         btnlimpar = findViewById(R.id.btnlimpar);
         btnsalvar = findViewById(R.id.btnsalvar);
-
         primeiroNome.setText(pessoa.getPrimeiroNome());
         sobrenome.setText(pessoa.getSobrenome());
         nomeCurso.setText(pessoa.getCursoDesejado());
