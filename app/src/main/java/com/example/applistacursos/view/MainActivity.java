@@ -12,12 +12,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.example.applistacursos.R;
+import com.example.applistacursos.controller.PessoaController;
 import com.example.applistacursos.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
-Pessoa pessoa;
-
-Pessoa outraPessoa;
+    PessoaController controller;
 
     EditText primeiroNome;
     EditText sobrenome;
@@ -39,6 +38,7 @@ Pessoa outraPessoa;
             return insets;
         });
 
+        controller = new PessoaController();
         pessoa = new Pessoa();
 
         pessoa.setPrimeiroNome("Magno");
@@ -55,29 +55,19 @@ Pessoa outraPessoa;
         btnlimpar = findViewById(R.id.btnlimpar);
         btnsalvar = findViewById(R.id.btnsalvar);
 
-        primeiroNome.setText(pessoa.getPrimeiroNome());
-        sobrenome.setText(pessoa.getSobrenome());
-        nomeCurso.setText(pessoa.getCursoDesejado());
-        telefone.setText(pessoa.getTelefone());
-
         btnsalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pessoa.setPrimeiroNome(primeiroNome.getText().toString());
-                pessoa.setSobrenome(sobrenome.getText().toString());
-                pessoa.setCursoDesejado(nomeCurso.getText().toString());
-                pessoa.setTelefone(telefone.getText().toString());
-
-                Toast.makeText(MainActivity.this, "Dados salvos: " + pessoa.toString(), Toast.LENGTH_LONG).show();
+                controller.toString();
+                controller.salvar(primeiroNome, sobrenome, nomeCurso, telefone);
+                Toast.makeText(MainActivity.this, "Dados salvos: ", Toast.LENGTH_LONG).show();
             }
         });
         btnlimpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                primeiroNome.setText(" ");
-                sobrenome.setText(" ");
-                nomeCurso.setText(" ");
-                telefone.setText(" ");
+                controller.toString();
+                controller.limpar(primeiroNome, sobrenome, nomeCurso, telefone);
             }
         });
         btnfinalizar.setOnClickListener(new View.OnClickListener() {
