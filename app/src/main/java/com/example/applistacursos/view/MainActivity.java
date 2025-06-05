@@ -39,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         controller = new PessoaController();
+        pessoa = new Pessoa();
+
+        pessoa.setPrimeiroNome("Magno");
+        pessoa.setSobrenome("Santos");
+        pessoa.setCursoDesejado("Desenvolvimento de Sistemas");
+        pessoa.setTelefone("99-9999-9999");
 
         primeiroNome = findViewById(R.id.primeironome);
         sobrenome = findViewById(R.id.sobrenome);
