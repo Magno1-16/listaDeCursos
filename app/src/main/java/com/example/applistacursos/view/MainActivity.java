@@ -11,6 +11,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.example.applistacursos.R;
+import com.example.applistacursos.controller.PessoaController;
 import com.example.applistacursos.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
