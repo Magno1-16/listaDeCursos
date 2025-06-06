@@ -1,5 +1,6 @@
 package com.example.applistacursos.view;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +17,8 @@ import com.example.applistacursos.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 Pessoa pessoa;
-Pessoa outraPessoa;
+public static final String NOME_PREFERENCES = "pref_listaVip";
+SharedPreferences preferences;
 
     EditText primeiroNome;
     EditText sobrenome;
@@ -36,48 +38,47 @@ Pessoa outraPessoa;
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        preferences = getSharedPreferences(NOME_PREFERENCES, 0);
+        SharedPreferences.Editor listaVip = preferences.edit();
+
         pessoa = new Pessoa();
 
-        pessoa.setPrimeiroNome("Magno");
-        pessoa.setSobrenome("Santos");
-        pessoa.setCursoDesejado("Desenvolvimento de Sistemas");
-        pessoa.setTelefone("99-9999-9999");
+        pessoa.setPrimeiroNome(preferences.getString("primeiroNome", "NA"));
+        pessoa.setSobrenome(preferences.getString("sobrenome", "NA"));
+        pessoa.setCursoDesejado(preferences.getString("CursoDesejado", "NA"));
+        pessoa.setTelefone(preferences.getString("telefone", "NA"));
 
-       /*outraPessoa = new Pessoa();
-        outraPessoa.setPrimeiroNome("Guilherme");
-        outraPessoa.setSobrenome("Ferreira");
-        outraPessoa.setCursoDesejado("Jogos");
-        outraPessoa.setTelefone("88-8888-8888");
-
-        primeiroNome = findViewById(R.id.primeironome);
-
-        sobrenome = findViewById(R.id.sobrenome);
-
-        nomeCurso = findViewById(R.id.nomecurso);
-
-        telefone = findViewById(R.id.telefone);
-        */
         primeiroNome = findViewById(R.id.primeironome);
         sobrenome = findViewById(R.id.sobrenome);
         nomeCurso = findViewById(R.id.nomecurso);
         telefone = findViewById(R.id.telefone);
+
         btnfinalizar = findViewById(R.id.btnfinalizar);
         btnlimpar = findViewById(R.id.btnlimpar);
         btnsalvar = findViewById(R.id.btnsalvar);
+
         primeiroNome.setText(pessoa.getPrimeiroNome());
         sobrenome.setText(pessoa.getSobrenome());
         nomeCurso.setText(pessoa.getCursoDesejado());
         telefone.setText(pessoa.getTelefone());
 
+
         btnsalvar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 pessoa.setPrimeiroNome(primeiroNome.getText().toString());
                 pessoa.setSobrenome(sobrenome.getText().toString());
                 pessoa.setCursoDesejado(nomeCurso.getText().toString());
                 pessoa.setTelefone(telefone.getText().toString());
+                Toast.makeText(MainActivity.this, "Dados salvos: ", Toast.LENGTH_LONG).show();
 
-                Toast.makeText(MainActivity.this, "Dados salvos: " + pessoa.toString(), Toast.LENGTH_LONG).show();
+               //Utilizado para salvar os arquivos dentro do device explorer
+                listaVip.putString("primeiroNome", pessoa.getPrimeiroNome());
+                listaVip.putString("sobrenome", pessoa.getSobrenome());
+                listaVip.putString("CursoDesejado", pessoa.getCursoDesejado());
+                listaVip.putString("telefone", pessoa.getTelefone());
+                listaVip.apply();
             }
         });
         btnlimpar.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +88,10 @@ Pessoa outraPessoa;
                 sobrenome.setText(" ");
                 nomeCurso.setText(" ");
                 telefone.setText(" ");
+
+                //Utilizado para apagar os arquivos salvos dentro do device explorer
+                listaVip.clear();
+                listaVip.apply();
             }
         });
         btnfinalizar.setOnClickListener(new View.OnClickListener() {
