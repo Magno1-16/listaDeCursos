@@ -1,11 +1,11 @@
 package com.example.applistacursos.view;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -16,13 +16,14 @@ import com.example.applistacursos.controller.PessoaController;
 import com.example.applistacursos.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
-    PessoaController controller;
+Pessoa pessoa;
+public static final String NOME_PREFERENCES = "pref_listaVip";
+SharedPreferences preferences;
 
     EditText primeiroNome;
     EditText sobrenome;
     EditText nomeCurso;
     EditText telefone;
-
     Button btnsalvar;
     Button btnlimpar;
     Button btnfinalizar;
@@ -38,13 +39,15 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        controller = new PessoaController();
+        preferences = getSharedPreferences(NOME_PREFERENCES, 0);
+        SharedPreferences.Editor listaVip = preferences.edit();
+
         pessoa = new Pessoa();
 
-        pessoa.setPrimeiroNome("Magno");
-        pessoa.setSobrenome("Santos");
-        pessoa.setCursoDesejado("Desenvolvimento de Sistemas");
-        pessoa.setTelefone("99-9999-9999");
+        pessoa.setPrimeiroNome(preferences.getString("primeiroNome", "NA"));
+        pessoa.setSobrenome(preferences.getString("sobrenome", "NA"));
+        pessoa.setCursoDesejado(preferences.getString("CursoDesejado", "NA"));
+        pessoa.setTelefone(preferences.getString("telefone", "NA"));
 
         primeiroNome = findViewById(R.id.primeironome);
         sobrenome = findViewById(R.id.sobrenome);
@@ -55,19 +58,40 @@ public class MainActivity extends AppCompatActivity {
         btnlimpar = findViewById(R.id.btnlimpar);
         btnsalvar = findViewById(R.id.btnsalvar);
 
+        primeiroNome.setText(pessoa.getPrimeiroNome());
+        sobrenome.setText(pessoa.getSobrenome());
+        nomeCurso.setText(pessoa.getCursoDesejado());
+        telefone.setText(pessoa.getTelefone());
+
+
         btnsalvar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                controller.toString();
-                controller.salvar(primeiroNome, sobrenome, nomeCurso, telefone);
+            public void onClick(View view) {
+                pessoa.setPrimeiroNome(primeiroNome.getText().toString());
+                pessoa.setSobrenome(sobrenome.getText().toString());
+                pessoa.setCursoDesejado(nomeCurso.getText().toString());
+                pessoa.setTelefone(telefone.getText().toString());
                 Toast.makeText(MainActivity.this, "Dados salvos: ", Toast.LENGTH_LONG).show();
+
+               //Utilizado para salvar os arquivos dentro do device explorer
+                listaVip.putString("primeiroNome", pessoa.getPrimeiroNome());
+                listaVip.putString("sobrenome", pessoa.getSobrenome());
+                listaVip.putString("CursoDesejado", pessoa.getCursoDesejado());
+                listaVip.putString("telefone", pessoa.getTelefone());
+                listaVip.apply();
             }
         });
         btnlimpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                controller.toString();
-                controller.limpar(primeiroNome, sobrenome, nomeCurso, telefone);
+                primeiroNome.setText(" ");
+                sobrenome.setText(" ");
+                nomeCurso.setText(" ");
+                telefone.setText(" ");
+
+                //Utilizado para apagar os arquivos salvos dentro do device explorer
+                listaVip.clear();
+                listaVip.apply();
             }
         });
         btnfinalizar.setOnClickListener(new View.OnClickListener() {
