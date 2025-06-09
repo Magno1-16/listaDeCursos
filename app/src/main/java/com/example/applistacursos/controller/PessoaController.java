@@ -22,8 +22,4 @@ public class PessoaController {
         Pessoa pessoa = new Pessoa(primeiroNome.getText().toString(), sobrenome.getText().toString(), nomeCurso.getText().toString(), telefone.getText().toString());
         Log.d("mvc_Controller", "dados salvos: " + pessoa.toString());
     }
-    /*public void finalizar(EditText finish){
-
-        Log.d("mvc_Controller", "finalizado");
-    }*/
 }
