@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -25,6 +25,7 @@ SharedPreferences preferences;
     EditText sobrenome;
     EditText nomeCurso;
     EditText telefone;
+
     Button btnsalvar;
     Button btnlimpar;
     Button btnfinalizar;
@@ -101,7 +102,5 @@ SharedPreferences preferences;
                 Toast.makeText(MainActivity.this, "Adeus!!", Toast.LENGTH_LONG).show();
             }
         });
- 
-
     }
 }
