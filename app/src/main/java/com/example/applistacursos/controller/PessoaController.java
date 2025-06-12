@@ -1,29 +1,49 @@
 package com.example.applistacursos.controller;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.EditText;
 import androidx.annotation.NonNull;
 import com.example.applistacursos.model.Pessoa;
+import com.example.applistacursos.view.MainActivity;
+
 public class PessoaController {
+    SharedPreferences.Editor listaVip;
+    public static final String NOME_PREFERENCES = "pref_listaVip";
+    SharedPreferences preferences;
+
+    public PessoaController(MainActivity mainActivity) {
+        preferences = mainActivity.getSharedPreferences(NOME_PREFERENCES, 0);
+        listaVip = preferences.edit();
+    }
     @NonNull
     @Override
     public String toString() {
         Log.d("mvc_Controller", "controller iniciado");
         return super.toString();
     }
-
-    public void limpar(EditText primeiroNome, EditText sobrenome, EditText nomeCurso, EditText telefone){
+    public void limpar(EditText primeiroNome, EditText sobrenome, EditText telefone) {
         Log.d("mvc_Controller", "dados limpos");
         primeiroNome.setText(" ");
         sobrenome.setText(" ");
-        nomeCurso.setText(" ");
         telefone.setText(" ");
-    }
-    public void salvar(EditText primeiroNome, EditText sobrenome, EditText nomeCurso, EditText telefone){
-        Pessoa pessoa = new Pessoa(primeiroNome.getText().toString(), sobrenome.getText().toString(), nomeCurso.getText().toString(), telefone.getText().toString());
-        Log.d("mvc_Controller", "dados salvos: " + pessoa.toString());
-    }
-    /*public void finalizar(EditText finish){
 
-        Log.d("mvc_Controller", "finalizado");
-    }*/
+        listaVip.clear();
+        listaVip.apply();
+    }
+    public void salvar(Pessoa pessoa) {
+        listaVip.putString("primeiroNome", pessoa.getPrimeiroNome());
+        listaVip.putString("sobrenome", pessoa.getSobrenome());
+        listaVip.putString("telefone", pessoa.getTelefone());
+        listaVip.apply();
+
+        Log.d("MVC_controller", "Dados salvos!" + pessoa.toString());
+    }
+    public Pessoa buscar (Pessoa pessoa){
+        pessoa.setPrimeiroNome(preferences.getString("primeiroNome", "NA"));
+        pessoa.setSobrenome(preferences.getString("sobrenome", "NA"));
+        pessoa.setTelefone(preferences.getString("telefone", "NA"));
+
+        return pessoa;
+    }
+    public void finish() {Log.d("MVC_controller", "App finalizado!");}
 }

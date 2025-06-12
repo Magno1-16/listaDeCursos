@@ -3,9 +3,18 @@
     <string name="txt_aplicativo_de_cursos">Aplicativo de cursos</string>
     <string name="txt_hint_edit_telefone_de_contato">Telefone de Contato:</string>
     <string name="txt_hint_edit_sobrenome">Sobrenome:</string>
-    <string name="txt_hint_edit_nome_do_curso_desejado">Nome do Curso Desejado:</string>
     <string name="txt_hint_edit_primeiro_nome">Primeiro Nome:</string>
     <string name="txt_button_limpar">LIMPAR</string>
     <string name="txt_button_salvar">SALVAR</string>
     <string name="txt_button_finalizar">FINALIZAR</string>
+    <string-array name="spinner_lista">
+        <item>Escolha o seu curso:</item>
+        <item>Banco de dados</item>
+        <item>Desenvolvedor de Sistemas</item>
+        <item>Tecnico em Informatica</item>
+        <item>Python</item>
+        <item>Estetica</item>
+        <item>Cabeleleiro</item>
+        <item>Java</item>
+    </string-array>
 </resources>

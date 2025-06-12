@@ -1,10 +1,14 @@
 package com.example.applistacursos.view;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -13,17 +17,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import com.example.applistacursos.R;
-import com.example.applistacursos.controller.PessoaController;
 import com.example.applistacursos.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 Pessoa pessoa;
-public static final String NOME_PREFERENCES = "pref_listaVip";
-SharedPreferences preferences;
 
+    Spinner spinner;
     EditText primeiroNome;
     EditText sobrenome;
-    EditText nomeCurso;
     EditText telefone;
 
     Button btnsalvar;
@@ -41,45 +42,39 @@ SharedPreferences preferences;
             return insets;
         });
 
-        preferences = getSharedPreferences(NOME_PREFERENCES, 0);
-        SharedPreferences.Editor listaVip = preferences.edit();
-        pessoa = new Pessoa();
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinner_lista, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
-        pessoa.setPrimeiroNome(preferences.getString("primeiroNome", "NA"));
-        pessoa.setSobrenome(preferences.getString("sobrenome", "NA"));
-        pessoa.setCursoDesejado(preferences.getString("CursoDesejado", "NA"));
-        pessoa.setTelefone(preferences.getString("telefone", "NA"));
+        class spinnerAct extends Activity implements AdapterView.OnItemSelectedListener {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        }
 
         primeiroNome = findViewById(R.id.primeironome);
         sobrenome = findViewById(R.id.sobrenome);
-        nomeCurso = findViewById(R.id.nomecurso);
         telefone = findViewById(R.id.telefone);
 
         btnfinalizar = findViewById(R.id.btnfinalizar);
         btnlimpar = findViewById(R.id.btnlimpar);
         btnsalvar = findViewById(R.id.btnsalvar);
 
-        primeiroNome.setText(pessoa.getPrimeiroNome());
+        //primeiroNome.setText(pessoa.getPrimeiroNome());
         sobrenome.setText(pessoa.getSobrenome());
-        nomeCurso.setText(pessoa.getCursoDesejado());
         telefone.setText(pessoa.getTelefone());
 
-
         btnsalvar.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 pessoa.setPrimeiroNome(primeiroNome.getText().toString());
                 pessoa.setSobrenome(sobrenome.getText().toString());
-                pessoa.setCursoDesejado(nomeCurso.getText().toString());
+
                 pessoa.setTelefone(telefone.getText().toString());
                 Toast.makeText(MainActivity.this, "Dados salvos: ", Toast.LENGTH_LONG).show();
-
-               //Utilizado para salvar os arquivos dentro do device explorer
-                listaVip.putString("primeiroNome", pessoa.getPrimeiroNome());
-                listaVip.putString("sobrenome", pessoa.getSobrenome());
-                listaVip.putString("CursoDesejado", pessoa.getCursoDesejado());
-                listaVip.putString("telefone", pessoa.getTelefone());
-                listaVip.apply();
             }
         });
         btnlimpar.setOnClickListener(new View.OnClickListener() {
@@ -87,12 +82,8 @@ SharedPreferences preferences;
             public void onClick(View v) {
                 primeiroNome.setText(" ");
                 sobrenome.setText(" ");
-                nomeCurso.setText(" ");
                 telefone.setText(" ");
-
-                //Utilizado para apagar os arquivos salvos dentro do device explorer
-                listaVip.clear();
-                listaVip.apply();
+                spinner.setSelection(0);
             }
         });
         btnfinalizar.setOnClickListener(new View.OnClickListener() {
