@@ -24,6 +24,8 @@
         android:id="@+id/telefone"
         android:layout_width="394dp"
         android:layout_height="48dp"
+
+        android:layout_marginTop="36dp"
         android:layout_marginTop="50dp"
         android:ems="10"
         android:hint="@string/txt_hint_edit_telefone_de_contato"
@@ -41,6 +43,8 @@
         android:text="@string/txt_button_finalizar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -48,6 +52,8 @@
         android:id="@+id/sobrenome"
         android:layout_width="394dp"
         android:layout_height="48dp"
+
+        android:layout_marginTop="36dp"
         android:layout_marginTop="50dp"
         android:ems="10"
         android:hint="@string/txt_hint_edit_sobrenome"
@@ -61,6 +67,13 @@
         android:id="@+id/btnsalvar"
         android:layout_width="120dp"
         android:layout_height="60dp"
+
+        android:layout_marginTop="100dp"
+        android:text="@string/txt_button_salvar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nomecurso" />
         android:layout_marginTop="92dp"
         android:text="@string/txt_button_salvar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,18 +85,19 @@
         android:id="@+id/btnlimpar"
         android:layout_width="120dp"
         android:layout_height="60dp"
-        android:layout_marginTop="92dp"
+
+        android:layout_marginTop="100dp"
         android:text="@string/txt_button_limpar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintHorizontal_bias="0.914"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/nomecurso" />
 
     <EditText
         android:id="@+id/primeironome"
         android:layout_width="394dp"
         android:layout_height="48dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="128dp"
         android:ems="10"
         android:hint="@string/txt_hint_edit_primeiro_nome"
         android:inputType="text"
@@ -91,6 +105,27 @@
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="92dp"
+        android:text="@string/txt_button_limpar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <Spinner
+        android:id="@+id/nomecurso"
+        android:layout_width="394dp"
+        android:layout_height="48dp"
+
+        android:layout_marginTop="36dp"
+        android:layout_marginTop="120dp"
+        android:ems="10"
+        android:hint="@string/txt_hint_edit_primeiro_nome"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/telefone" />
 
     <Spinner
         android:id="@+id/spinner"

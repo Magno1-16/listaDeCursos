@@ -16,6 +16,10 @@ public class Pessoa {
         this.sobrenome = sobrenome;
     }
 
+    public Pessoa() {
+
+    }
+
     public String getPrimeiroNome() {
         return primeiroNome;
     }
