@@ -8,4 +8,13 @@
     <string name="txt_button_limpar">LIMPAR</string>
     <string name="txt_button_salvar">SALVAR</string>
     <string name="txt_button_finalizar">FINALIZAR</string>
+    <string-array name="cursos">
+        <item>Escolha o curso: </item>
+        <item>Java</item>
+        <item>Kotlin</item>
+        <item>C++</item>
+        <item>Android</item>
+        <item>Python</item>
+        <item>C#</item>
+    </string-array>
 </resources>

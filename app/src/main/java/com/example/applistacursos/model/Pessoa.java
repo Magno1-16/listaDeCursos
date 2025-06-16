@@ -6,7 +6,7 @@ public class Pessoa {
     private String cursoDesejado;
     private String telefone;
 
-    public Pessoa() {
+    public Pessoa(String string, String s, String string1) {
     }
 
     public Pessoa(String primeiroNome, String telefone, String cursoDesejado, String sobrenome) {
@@ -14,6 +14,10 @@ public class Pessoa {
         this.telefone = telefone;
         this.cursoDesejado = cursoDesejado;
         this.sobrenome = sobrenome;
+    }
+
+    public Pessoa() {
+
     }
 
     public String getPrimeiroNome() {

@@ -23,37 +23,37 @@
     <EditText
         android:id="@+id/telefone"
         android:layout_width="394dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:hint="@string/txt_hint_edit_telefone_de_contato"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nomecurso" />
+        app:layout_constraintTop_toBottomOf="@+id/sobrenome" />
 
     <Button
         android:id="@+id/btnfinalizar"
         android:layout_width="360dp"
         android:layout_height="57dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginBottom="36dp"
         android:text="@string/txt_button_finalizar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/telefone" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/sobrenome"
         android:layout_width="394dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:hint="@string/txt_hint_edit_sobrenome"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/primeironome" />
 
@@ -61,48 +61,45 @@
         android:id="@+id/btnsalvar"
         android:layout_width="120dp"
         android:layout_height="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="100dp"
         android:text="@string/txt_button_salvar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.096"
+        app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/telefone" />
+        app:layout_constraintTop_toBottomOf="@+id/nomecurso" />
 
     <Button
         android:id="@+id/btnlimpar"
         android:layout_width="120dp"
         android:layout_height="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="100dp"
         android:text="@string/txt_button_limpar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintHorizontal_bias="0.914"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/telefone" />
-
-    <EditText
-        android:id="@+id/nomecurso"
-        android:layout_width="394dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:hint="@string/txt_hint_edit_nome_do_curso_desejado"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sobrenome" />
+        app:layout_constraintTop_toBottomOf="@+id/nomecurso" />
 
     <EditText
         android:id="@+id/primeironome"
         android:layout_width="394dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="120dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="128dp"
         android:ems="10"
         android:hint="@string/txt_hint_edit_primeiro_nome"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/nomecurso"
+        android:layout_width="394dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/telefone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
